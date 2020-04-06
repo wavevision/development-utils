@@ -1,0 +1,28 @@
+{
+  "name": "wavevision/development-utils",
+  "type": "library",
+  "license": "MIT",
+  "description": "",
+  "authors": [
+    {
+      "name": "Jakub Filla",
+      "email": "jakub.filla@wavevision.cz"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Wavevision\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "nette/neon": "^3.1",
+    "wavevision/utils": "^2.9"
+  },
+  "require-dev": {
+    "wavevision/coding-standard": "^3.1"
+  },
+  "bin": [
+    "bin/create-database"
+  ]
+}
