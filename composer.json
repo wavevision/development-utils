@@ -2,11 +2,19 @@
   "name": "wavevision/development-utils",
   "type": "library",
   "license": "MIT",
-  "description": "",
+  "description": "CLI tools for development",
   "authors": [
+    {
+      "name": "Wavevision s.r.o.",
+      "email": "info@wavevision.com"
+    },
     {
       "name": "Jakub Filla",
       "email": "jakub.filla@wavevision.cz"
+    },
+    {
+      "name": "Vít Rozsíval",
+      "email": "vit@wavevision.com"
     }
   ],
   "autoload": {
@@ -20,7 +28,9 @@
     "wavevision/utils": "^2.9"
   },
   "require-dev": {
-    "wavevision/coding-standard": "^3.1"
+    "wavevision/coding-standard": "^3.1",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
+    "phpstan/phpstan": "^0.12.18"
   },
   "bin": [
     "bin/create-database"
