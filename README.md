@@ -4,9 +4,17 @@
 [![Build Status](https://travis-ci.org/wavevision/nette-tests.svg?branch=master)](https://travis-ci.org/wavevision/development-utils)
 [![PHPStan](https://img.shields.io/badge/style-level%20max-brightgreen.svg?label=phpstan)](https://github.com/phpstan/phpstan)
 
-# Usage
 
-## Creating database
+## Install
+
+```
+composer require --dev wavevision/development-utils
+```
+
+## Features
+
+### Create database from config
+
 ```
 vendor/bin/create-database config.neon
 ```
