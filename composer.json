@@ -33,6 +33,7 @@
     "phpstan/phpstan": "^0.12.18"
   },
   "bin": [
-    "bin/create-database"
+    "bin/create-database",
+    "bin/generate-constants"
   ]
 }
