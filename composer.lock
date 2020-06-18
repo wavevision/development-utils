@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "348829a716c1e76eb4b03d56872b18ad",
+    "content-hash": "1d92bdaf80c5bb5ad8f401be4dbe26de",
     "packages": [
         {
             "name": "flow/jsonpath",
@@ -174,16 +174,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "2c17d16d8887579ae1c0898ff94a3668997fd3eb"
+                "reference": "488f58378bba71767e7831c83f9e0fa808bf83b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/2c17d16d8887579ae1c0898ff94a3668997fd3eb",
-                "reference": "2c17d16d8887579ae1c0898ff94a3668997fd3eb",
+                "url": "https://api.github.com/repos/nette/utils/zipball/488f58378bba71767e7831c83f9e0fa808bf83b9",
+                "reference": "488f58378bba71767e7831c83f9e0fa808bf83b9",
                 "shasum": ""
             },
             "require": {
@@ -196,7 +196,7 @@
             },
             "suggest": {
                 "ext-gd": "to use Image",
-                "ext-iconv": "to use Strings::webalize() and toAscii()",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
                 "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
                 "ext-json": "to use Nette\\Utils\\Json",
                 "ext-mbstring": "to use Strings::lower() etc...",
@@ -248,20 +248,20 @@
                 "utility",
                 "validation"
             ],
-            "time": "2020-02-09T14:10:55+00:00"
+            "time": "2020-05-27T09:58:51+00:00"
         },
         {
             "name": "wavevision/utils",
-            "version": "2.9.0",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wavevision/utils.git",
-                "reference": "eff24fa73a23fe272ff1a7d175a69968d20fca0e"
+                "reference": "23a6e683d58a9bf64b430743c1e929f940d24baf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/utils/zipball/eff24fa73a23fe272ff1a7d175a69968d20fca0e",
-                "reference": "eff24fa73a23fe272ff1a7d175a69968d20fca0e",
+                "url": "https://api.github.com/repos/wavevision/utils/zipball/23a6e683d58a9bf64b430743c1e929f940d24baf",
+                "reference": "23a6e683d58a9bf64b430743c1e929f940d24baf",
                 "shasum": ""
             },
             "require": {
@@ -272,11 +272,11 @@
                 "php": ">=7.4"
             },
             "require-dev": {
-                "jakub-onderka/php-parallel-lint": "^1.0",
                 "mikey179/vfsstream": "^1.6",
                 "phing/phing": "^3.0-alpha3",
                 "php-coveralls/php-coveralls": "^2.1",
                 "php-mock/php-mock-phpunit": "^2.4",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
                 "phpstan/phpstan": "^0.12.3",
                 "phpunit/phpunit": "^8.3",
                 "wavevision/coding-standard": "^3.0"
@@ -309,7 +309,7 @@
                 }
             ],
             "description": "Useful PHP utilities and helpers.",
-            "time": "2020-03-16T12:13:42+00:00"
+            "time": "2020-06-18T11:35:31+00:00"
         }
     ],
     "packages-dev": [
@@ -368,16 +368,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "0.4.3",
+            "version": "0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "928179efc5368145a8b03cb20d58cb3f3136afae"
+                "reference": "d8d9d4645379e677466d407034436bb155b11c65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/928179efc5368145a8b03cb20d58cb3f3136afae",
-                "reference": "928179efc5368145a8b03cb20d58cb3f3136afae",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/d8d9d4645379e677466d407034436bb155b11c65",
+                "reference": "d8d9d4645379e677466d407034436bb155b11c65",
                 "shasum": ""
             },
             "require": {
@@ -389,7 +389,7 @@
                 "jakub-onderka/php-parallel-lint": "^0.9.2",
                 "phing/phing": "^2.16.0",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^0.12.19",
                 "phpstan/phpstan-strict-rules": "^0.12",
                 "phpunit/phpunit": "^6.3",
                 "slevomat/coding-standard": "^4.7.2",
@@ -413,24 +413,27 @@
                 "MIT"
             ],
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
-            "time": "2020-01-25T20:42:48+00:00"
+            "time": "2020-04-13T16:28:46+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.18",
+            "version": "0.12.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "1ce27fe29c8660a27926127d350d53d80c4d4286"
+                "reference": "9771daaf6b95c6313b908d0bcdee0afcd51f838a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/1ce27fe29c8660a27926127d350d53d80c4d4286",
-                "reference": "1ce27fe29c8660a27926127d350d53d80c4d4286",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9771daaf6b95c6313b908d0bcdee0afcd51f838a",
+                "reference": "9771daaf6b95c6313b908d0bcdee0afcd51f838a",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
             },
             "bin": [
                 "phpstan",
@@ -466,35 +469,36 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-22T16:51:47+00:00"
+            "time": "2020-06-14T14:10:59+00:00"
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "6.2.0",
+            "version": "6.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "c4bf9cad66da885cc843cc24d708661d9d8fbb95"
+                "reference": "dd73c0f9c2207026aeda4b0fdff6e9b7ed2a83e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/c4bf9cad66da885cc843cc24d708661d9d8fbb95",
-                "reference": "c4bf9cad66da885cc843cc24d708661d9d8fbb95",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/dd73c0f9c2207026aeda4b0fdff6e9b7ed2a83e5",
+                "reference": "dd73c0f9c2207026aeda4b0fdff6e9b7ed2a83e5",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
-                "phpstan/phpdoc-parser": "0.4.0 - 0.4.3",
-                "squizlabs/php_codesniffer": "^3.5.4"
+                "phpstan/phpdoc-parser": "0.4.0 - 0.4.4",
+                "squizlabs/php_codesniffer": "^3.5.5"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "0.6.2",
                 "phing/phing": "2.16.3",
-                "php-parallel-lint/php-parallel-lint": "1.1.0",
-                "phpstan/phpstan": "0.12.18",
-                "phpstan/phpstan-phpunit": "0.12.6",
+                "php-parallel-lint/php-parallel-lint": "1.2.0",
+                "phpstan/phpstan": "0.12.19",
+                "phpstan/phpstan-deprecation-rules": "0.12.2",
+                "phpstan/phpstan-phpunit": "0.12.8",
                 "phpstan/phpstan-strict-rules": "0.12.2",
-                "phpunit/phpunit": "7.5.20|8.5.2|9.0.1"
+                "phpunit/phpunit": "7.5.20|8.5.2|9.1.2"
             },
             "type": "phpcodesniffer-standard",
             "extra": {
@@ -522,20 +526,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-28T22:04:31+00:00"
+            "time": "2020-06-16T07:24:48+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.4",
+            "version": "3.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "dceec07328401de6211037abbb18bda423677e26"
+                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/dceec07328401de6211037abbb18bda423677e26",
-                "reference": "dceec07328401de6211037abbb18bda423677e26",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
+                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +577,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-01-30T22:20:29+00:00"
+            "time": "2020-04-17T01:09:41+00:00"
         },
         {
             "name": "wavevision/coding-standard",
