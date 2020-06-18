@@ -21,13 +21,9 @@ class GenerateConstants
 		$reflectionClass = new ReflectionClass($class);
 		foreach ($reflectionClass->getProperties() as $property) {
 			$value = $property->getName();
-			$name = strtoupper($this->camelCaseToDashCase($value));
+			$name = strtoupper(Strings::camelCaseToSnakeCase($value));
 			echo sprintf("public const %s = '%s';", $name, $value) . "\n";
 		}
 	}
 
-	private function camelCaseToDashCase(string $s): string
-	{
-		return strtolower(Strings::replace($s, '/([a-zA-Z])(?=[A-Z])/', '$1_'));
-	}
 }
