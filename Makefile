@@ -1,11 +1,12 @@
 php=php
 src=src
+tests=tests
 codeSnifferRuleset=codesniffer-ruleset.xml
-dirs:=$(src)
+dirs:=$(src) $(tests)
 bin=vendor/bin
 
 
-fix: check-syntax phpcbf phpcs phpstan
+fix: check-syntax phpcbf phpcs phpstan test
 
 check-syntax:
 	$(bin)/parallel-lint -e $(php) $(dirs)
@@ -20,3 +21,6 @@ phpstan:
 	$(bin)/phpstan analyze $(dirs) --level max
 
 ci: check-syntax phpcs phpstan
+
+test:
+	$(bin)/phpunit tests

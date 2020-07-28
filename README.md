@@ -19,3 +19,7 @@ composer require --dev wavevision/development-utils
 vendor/bin/create-database config.neon
 ```
 
+## Testing
+```
+make test
+```

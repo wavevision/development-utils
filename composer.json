@@ -22,10 +22,16 @@
       "Wavevision\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Wavevision\\": "tests/"
+    }
+  },
   "require": {
     "php": ">=7.4",
     "nette/neon": "^3.1",
-    "wavevision/utils": "^2.11"
+    "wavevision/utils": "^2.11",
+    "phpunit/phpunit": "^9.2"
   },
   "require-dev": {
     "wavevision/coding-standard": "^3.1",

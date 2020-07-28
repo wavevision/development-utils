@@ -1,0 +1,7 @@
+parameters:
+    forceProductionMode: true
+parameters2:
+    nestedSomething:
+        forceProductionMode: true
+    nestedSomethingElse:
+        forceProductionMode: false
