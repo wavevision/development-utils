@@ -4,6 +4,8 @@ namespace Wavevision\DevelopmentUtils;
 
 use Nette\StaticClass;
 use Wavevision\Utils\ExternalProgram\Executor;
+use function implode;
+use function sprintf;
 
 class Database
 {
