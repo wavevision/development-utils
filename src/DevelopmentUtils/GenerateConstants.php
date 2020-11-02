@@ -6,6 +6,10 @@ use ReflectionClass;
 use Wavevision\Utils\Strings;
 use Wavevision\Utils\Tokenizer\Tokenizer;
 use Wavevision\Utils\Tokenizer\TokenizeResult;
+use function sprintf;
+use function strtoupper;
+use const T_CLASS;
+use const T_TRAIT;
 
 class GenerateConstants
 {
