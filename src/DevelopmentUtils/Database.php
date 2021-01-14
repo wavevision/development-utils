@@ -3,7 +3,6 @@
 namespace Wavevision\DevelopmentUtils;
 
 use Nette\StaticClass;
-use Wavevision\Utils\ExternalProgram\Executor;
 use function implode;
 use function sprintf;
 
@@ -38,7 +37,7 @@ class Database
 	public static function mysql(array $config): callable
 	{
 		return function (string $base, string $command) use ($config): void {
-			self::bash(implode(' ', [$base, self::mysqlConfig($config), $command]));
+			Cli::command(implode(' ', [$base, self::mysqlConfig($config), $command]));
 		};
 	}
 
@@ -48,12 +47,6 @@ class Database
 	private static function databaseConfig(string $configFile): array
 	{
 		return NeonConfig::read($configFile)['parameters']['database'];
-	}
-
-	private static function bash(string $command): void
-	{
-		echo "$command\n";
-		Executor::execute($command);
 	}
 
 	/**
