@@ -5,11 +5,12 @@ namespace Wavevision\DevelopmentUtils\Commands;
 use Garden\Cli\Args;
 use Garden\Cli\Cli;
 use Wavevision\DevelopmentUtils\Database;
+use Wavevision\DevelopmentUtils\NeonConfig;
 
 class DatabaseCommand
 {
 
-	private const CONFIG_FILE_PATH = 'configFilePath';
+	private const CONFIG_LOCAL = 'configLocal';
 
 	private const DATABASE_DUMP_FILE = 'databaseDumpFile';
 
@@ -38,12 +39,12 @@ class DatabaseCommand
 
 	public function defineArg(Cli $cli): void
 	{
-		$cli->arg(self::CONFIG_FILE_PATH, 'Path to config.local.neon, where database credentials are stored.', true);
+		$cli->arg(self::CONFIG_LOCAL, 'Path to config, where database credentials are defined.', true);
 	}
 
 	public function createInstance(Args $args): Database
 	{
-		return new Database($args->getArg(self::CONFIG_FILE_PATH)['parameters']['database']);
+		return new Database(NeonConfig::read($args->getArg(self::CONFIG_LOCAL))['parameters']['database']);
 	}
 
 }

@@ -13,7 +13,7 @@ class DownloadDevelopmentCommand
 
 	use SmartObject;
 
-	private const CONFIG_FILE = 'configFile';
+	private const DOWNLOAD_DEVELOPMENT_CONFIG = 'downloadDevelopmentConfigFile';
 
 	/**
 	 * @param array<mixed> $argv
@@ -28,12 +28,16 @@ class DownloadDevelopmentCommand
 
 	public function defineArg(Cli $cli): void
 	{
-		$cli->arg(self::CONFIG_FILE, 'Path to config file', true);
+		$cli->arg(
+			self::DOWNLOAD_DEVELOPMENT_CONFIG,
+			'Path to downloadDevelopment.neon',
+			true
+		);
 	}
 
 	public function createInstance(Args $args): DownloadDevelopment
 	{
-		return new DownloadDevelopment(NeonConfig::read($args->getArg(self::CONFIG_FILE)));
+		return new DownloadDevelopment(NeonConfig::read($args->getArg(self::DOWNLOAD_DEVELOPMENT_CONFIG)));
 	}
 
 }
