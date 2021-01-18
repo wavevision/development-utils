@@ -4,4 +4,4 @@ require_once __DIR__ . '/autoload.php';
 
 use Wavevision\DevelopmentUtils\Database;
 
-Database::create($argv[1]);
+Database::fromFile($argv[1])->create();

@@ -2,8 +2,6 @@
 
 namespace Wavevision\DevelopmentUtils;
 
-use Nette\Neon\Neon;
-use Nette\Utils;
 use function sprintf;
 
 class DownloadDevelopment
@@ -14,17 +12,22 @@ class DownloadDevelopment
 	 */
 	private array $config;
 
+	private RemoteFileSystem $remoteFileSystem;
+
 	/**
 	 * @param array<mixed> $config
 	 */
 	public function __construct(array $config)
 	{
 		$this->config = $config;
+		$this->remoteFileSystem = new RemoteFileSystem(
+			sprintf('%s@%s', $this->config['server']['user'], $this->config['server']['host'])
+		);
 	}
 
-	public static function fromNeon(string $configFile): self
+	public static function fromFile(string $config): self
 	{
-		return new self(Neon::decode(Utils\FileSystem::read($configFile)));
+		return new self(NeonConfig::read($config));
 	}
 
 	/**
@@ -48,12 +51,11 @@ class DownloadDevelopment
 
 	private function database(): void
 	{
-		$remoteCli = FileSystem::remoteCli($this->remote());
 		$database = $this->config['database'];
 		$databaseName = $database['name'];
 		$remoteDatabaseDump = $database['dump']['remote'];
 		Cli::printInfo("Dumping database on remote to file $remoteDatabaseDump.");
-		$remoteCli(
+		$this->remoteFileSystem->cli(
 			sprintf(
 				"mysqldump -h%s -u%s -p%s %s > %s",
 				$database['host'],
@@ -63,8 +65,7 @@ class DownloadDevelopment
 				$remoteDatabaseDump,
 			)
 		);
-		$remote2Local = $this->remote2Local();
-		$remote2Local($remoteDatabaseDump, $this->getLocalDatabaseDump());
+		$this->remoteFileSystem->remote2Local($remoteDatabaseDump, $this->getLocalDatabaseDump());
 	}
 
 	private function filesystem(): void
@@ -72,21 +73,15 @@ class DownloadDevelopment
 		$files = $this->config['files'];
 		$remoteBase = $files['remote'];
 		$localBase = $files['local'];
-		$remote2Local = $this->remote2Local();
 		foreach ($files['local2Remote'] as $remote => $local) {
+			$localPath = "$localBase/$local";
+			if ($files['clearLocal']) {
+				Cli::printInfo("Cleaning local $local");
+				Cli::command(sprintf('rm -rf "%s"*', $localPath));
+			}
 			Cli::printInfo("Downloading $remote -> $local");
-			$remote2Local("$remoteBase/$remote", "$localBase/$local");
+			$this->remoteFileSystem->remote2Local("$remoteBase/$remote", $localPath);
 		}
-	}
-
-	private function remote2Local(): callable
-	{
-		return FileSystem::remote2Local($this->remote());
-	}
-
-	private function remote(): string
-	{
-		return sprintf('%s@%s', $this->config['server']['user'], $this->config['server']['host']);
 	}
 
 }

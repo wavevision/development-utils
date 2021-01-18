@@ -3,5 +3,7 @@
 require_once __DIR__ . '/autoload.php';
 
 use Wavevision\DevelopmentUtils\SetupDevelopment;
+use Wavevision\DevelopmentUtils\Database;
+use Wavevision\DevelopmentUtils\DownloadDevelopment;
 
-(new SetupDevelopment())->process($argv[1], $argv[2]);
+(new SetupDevelopment(DownloadDevelopment::fromFile($argv[1]), Database::fromFile($argv[2])))->process();

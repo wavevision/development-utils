@@ -3,5 +3,6 @@
 require_once __DIR__ . '/autoload.php';
 
 use Wavevision\DevelopmentUtils\Database;
+use Wavevision\DevelopmentUtils\NeonConfig;
 
-Database::populate($argv[1], $argv[2]);
+(new Database(NeonConfig::read($argv[1])))->populate($argv[2]);

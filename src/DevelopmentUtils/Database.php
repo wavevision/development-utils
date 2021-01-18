@@ -2,62 +2,57 @@
 
 namespace Wavevision\DevelopmentUtils;
 
-use Nette\StaticClass;
+use Nette\SmartObject;
 use function implode;
 use function sprintf;
 
 class Database
 {
 
-	use StaticClass;
+	use SmartObject;
 
-	public static function populate(string $configFile, string $pathToDbDump): void
-	{
-		$databaseConfig = self::databaseConfig($configFile);
-		$databaseName = $databaseConfig['name'];
-		$mysql = self::mysql($databaseConfig);
-		Cli::printInfo("Populating database $databaseName using $pathToDbDump.");
-		$mysql('mysql', "$databaseName < $pathToDbDump");
-	}
-
-	public static function create(string $configFile): void
-	{
-		$databaseConfig = self::databaseConfig($configFile);
-		$databaseName = $databaseConfig['name'];
-		$mysql = self::mysql($databaseConfig);
-		Cli::printInfo("Dropping database $databaseName.");
-		$mysql('mysql', "-e 'DROP DATABASE IF EXISTS `$databaseName`'");
-		Cli::printInfo("Creating database $databaseName.");
-		$mysql(
-			'mysql',
-			"-e 'CREATE DATABASE `$databaseName`'"
-		);
-	}
+	/**
+	 * @var array<mixed>
+	 */
+	private array $config;
 
 	/**
 	 * @param array<mixed> $config
 	 */
-	public static function mysql(array $config): callable
+	public function __construct(array $config)
 	{
-		return function (string $base, string $command) use ($config): void {
-			Cli::command(implode(' ', [$base, self::mysqlConfig($config), $command]));
-		};
+		$this->config = $config;
 	}
 
-	/**
-	 * @return array<mixed>
-	 */
-	private static function databaseConfig(string $configFile): array
+	public static function fromFile(string $config): self
 	{
-		return NeonConfig::read($configFile)['parameters']['database'];
+		return new self(NeonConfig::read($config)['parameters']['database']);
 	}
 
-	/**
-	 * @param array<mixed> $database
-	 */
-	private static function mysqlConfig(array $database): string
+	public function populate(string $pathToDbDump): void
 	{
-		return sprintf("-h'%s' -u'%s' -p'%s'", $database['host'], $database['user'], $database['password']);
+		$databaseName = $this->config['name'];
+		Cli::printInfo("Populating database $databaseName using $pathToDbDump.");
+		$this->mysql("$databaseName < $pathToDbDump");
+	}
+
+	public function create(): void
+	{
+		$databaseName = $this->config['name'];
+		Cli::printInfo("Dropping database $databaseName.");
+		$this->mysql("-e 'DROP DATABASE IF EXISTS `$databaseName`'");
+		Cli::printInfo("Creating database $databaseName.");
+		$this->mysql("-e 'CREATE DATABASE `$databaseName`'");
+	}
+
+	private function mysql(string $command): void
+	{
+		Cli::command(implode(' ', ['mysql', self::mysqlConfig(), $command]));
+	}
+
+	private function mysqlConfig(): string
+	{
+		return sprintf("-h'%s' -u'%s' -p'%s'", $this->config['host'], $this->config['user'], $this->config['password']);
 	}
 
 }

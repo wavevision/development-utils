@@ -12,6 +12,7 @@ database:
 files:
     remote: /var/www/project/web/shared
     local: /var/www/project
+    clearLocal: true
     local2Remote:
         data/: data/
         www/data/: www/data/

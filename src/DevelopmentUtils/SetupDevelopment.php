@@ -2,19 +2,24 @@
 
 namespace Wavevision\DevelopmentUtils;
 
-use Nette\SmartObject;
-
 class SetupDevelopment
 {
 
-	use SmartObject;
+	private DownloadDevelopment $downloadDevelopment;
 
-	public function process(string $downloadDevelopmentConfig, string $localConfig): void
+	private Database $database;
+
+	public function __construct(DownloadDevelopment $downloadDevelopment, Database $database)
 	{
-		$downloadDevelopment = DownloadDevelopment::fromNeon($downloadDevelopmentConfig);
-		$downloadDevelopment->process();
-		Database::create($localConfig);
-		Database::populate($localConfig, $downloadDevelopment->getLocalDatabaseDump());
+		$this->downloadDevelopment = $downloadDevelopment;
+		$this->database = $database;
+	}
+
+	public function process(): void
+	{
+		$this->downloadDevelopment->process();
+		$this->database->create();
+		$this->database->populate($this->downloadDevelopment->getLocalDatabaseDump());
 		Cli::printInfo("SUCCESS");
 	}
 
