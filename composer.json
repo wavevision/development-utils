@@ -30,7 +30,8 @@
   "require": {
     "php": ">=7.4",
     "nette/neon": "^3.1",
-    "wavevision/utils": "^2.11"
+    "wavevision/utils": "^2.11",
+    "codedungeon/php-cli-colors": "^1.12"
   },
   "require-dev": {
     "wavevision/coding-standard": "^5.2",

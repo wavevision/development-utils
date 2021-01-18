@@ -1,0 +1,17 @@
+server:
+    user: user
+    host: host
+database:
+    name: database
+    host: localhost
+    user: root
+    password: password
+    dump:
+        remote: /tmp/database.sql
+        local: /var/www/project/temp/database.sql
+files:
+    remote: /var/www/project/web/shared
+    local: /var/www/project
+    local2Remote:
+        data/: data/
+        www/data/: www/data/

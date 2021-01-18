@@ -16,6 +16,7 @@ class Database
 		$databaseConfig = self::databaseConfig($configFile);
 		$databaseName = $databaseConfig['name'];
 		$mysql = self::mysql($databaseConfig);
+		Cli::printInfo("Populating database $databaseName using $pathToDbDump.");
 		$mysql('mysql', "$databaseName < $pathToDbDump");
 	}
 
@@ -24,7 +25,9 @@ class Database
 		$databaseConfig = self::databaseConfig($configFile);
 		$databaseName = $databaseConfig['name'];
 		$mysql = self::mysql($databaseConfig);
+		Cli::printInfo("Dropping database $databaseName.");
 		$mysql('mysql', "-e 'DROP DATABASE IF EXISTS `$databaseName`'");
+		Cli::printInfo("Creating database $databaseName.");
 		$mysql(
 			'mysql',
 			"-e 'CREATE DATABASE `$databaseName`'"

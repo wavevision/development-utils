@@ -2,16 +2,36 @@
 
 namespace Wavevision\DevelopmentUtils;
 
-use Wavevision\Utils\ExternalProgram\Executor;
-use Wavevision\Utils\ExternalProgram\Result;
+use Codedungeon\PHPCliColors\Color;
+use function passthru;
+use const PHP_EOL;
 
 class Cli
 {
 
-	public static function command(string $command): Result
+	public static function command(string $command): void
 	{
-		echo "$command\n";
-		return Executor::execute($command);
+		self::printCommand($command);
+		passthru($command);
+	}
+
+	public static function println(string $line, ?string $color = null): void
+	{
+		if ($color) {
+			echo $color, $line, Color::RESET, PHP_EOL;
+		} else {
+			echo $line, PHP_EOL;
+		}
+	}
+
+	public static function printInfo(string $text): void
+	{
+		self::println($text, Color::GREEN);
+	}
+
+	private static function printCommand(string $text): void
+	{
+		self::println($text, Color::BLUE);
 	}
 
 }
