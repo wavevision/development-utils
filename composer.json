@@ -39,6 +39,9 @@
   },
   "bin": [
     "bin/create-database",
-    "bin/generate-constants"
+    "bin/generate-constants",
+    "bin/download-development",
+    "bin/populate-database",
+    "bin/setup-development"
   ]
 }
