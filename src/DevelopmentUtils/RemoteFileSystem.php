@@ -24,12 +24,12 @@ class RemoteFileSystem
 
 	public function cli(string $command): void
 	{
-		Cli::command(sprintf('ssh %s "%s"', $this->remote, $command));
+		CliCommand::exec(sprintf('ssh %s "%s"', $this->remote, $command));
 	}
 
 	private function rsync(string $source, string $destination): void
 	{
-		Cli::command(sprintf('rsync -chavzP --stats "%s" "%s"', $source, $destination));
+		CliCommand::exec(sprintf('rsync -chavzP --stats "%s" "%s"', $source, $destination));
 	}
 
 }

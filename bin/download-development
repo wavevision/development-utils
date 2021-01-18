@@ -2,7 +2,6 @@
 <?php declare(strict_types = 1);
 require_once __DIR__ . '/autoload.php';
 
-use Wavevision\DevelopmentUtils\DownloadDevelopment;
-use Wavevision\DevelopmentUtils\NeonConfig;
+use Wavevision\DevelopmentUtils\Commands\DownloadDevelopmentCommand;
 
-(new DownloadDevelopment(NeonConfig::read($argv[1])))->process();
+(new DownloadDevelopmentCommand())->run($argv);

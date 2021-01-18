@@ -6,10 +6,10 @@ use Codedungeon\PHPCliColors\Color;
 use function passthru;
 use const PHP_EOL;
 
-class Cli
+class CliCommand
 {
 
-	public static function command(string $command): void
+	public static function exec(string $command): void
 	{
 		self::printCommand($command);
 		passthru($command);

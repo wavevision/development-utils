@@ -20,7 +20,7 @@ class SetupDevelopment
 		$this->downloadDevelopment->process();
 		$this->database->create();
 		$this->database->populate($this->downloadDevelopment->getLocalDatabaseDump());
-		Cli::printInfo("SUCCESS");
+		CliCommand::printInfo("SUCCESS");
 	}
 
 }

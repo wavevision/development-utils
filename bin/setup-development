@@ -2,8 +2,6 @@
 <?php declare(strict_types = 1);
 require_once __DIR__ . '/autoload.php';
 
-use Wavevision\DevelopmentUtils\SetupDevelopment;
-use Wavevision\DevelopmentUtils\Database;
-use Wavevision\DevelopmentUtils\DownloadDevelopment;
+use Wavevision\DevelopmentUtils\Commands\SetupDevelopmentCommand;
 
-(new SetupDevelopment(DownloadDevelopment::fromFile($argv[1]), Database::fromFile($argv[2])))->process();
+(new SetupDevelopmentCommand())->run($argv);

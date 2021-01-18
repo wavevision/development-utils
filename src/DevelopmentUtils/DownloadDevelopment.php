@@ -25,11 +25,6 @@ class DownloadDevelopment
 		);
 	}
 
-	public static function fromFile(string $config): self
-	{
-		return new self(NeonConfig::read($config));
-	}
-
 	/**
 	 * @return array<mixed>
 	 */
@@ -54,7 +49,7 @@ class DownloadDevelopment
 		$database = $this->config['database'];
 		$databaseName = $database['name'];
 		$remoteDatabaseDump = $database['dump']['remote'];
-		Cli::printInfo("Dumping database on remote to file $remoteDatabaseDump.");
+		CliCommand::printInfo("Dumping database on remote to file $remoteDatabaseDump.");
 		$this->remoteFileSystem->cli(
 			sprintf(
 				"mysqldump -h%s -u%s -p%s %s > %s",
@@ -76,10 +71,10 @@ class DownloadDevelopment
 		foreach ($files['local2Remote'] as $remote => $local) {
 			$localPath = "$localBase/$local";
 			if ($files['clearLocal']) {
-				Cli::printInfo("Cleaning local $local");
-				Cli::command(sprintf('rm -rf "%s"*', $localPath));
+				CliCommand::printInfo("Cleaning local $local");
+				CliCommand::exec(sprintf('rm -rf "%s"*', $localPath));
 			}
-			Cli::printInfo("Downloading $remote -> $local");
+			CliCommand::printInfo("Downloading $remote -> $local");
 			$this->remoteFileSystem->remote2Local("$remoteBase/$remote", $localPath);
 		}
 	}

@@ -2,7 +2,6 @@
 <?php declare(strict_types = 1);
 require_once __DIR__ . '/autoload.php';
 
-use Wavevision\DevelopmentUtils\Database;
-use Wavevision\DevelopmentUtils\NeonConfig;
+use Wavevision\DevelopmentUtils\Commands\DatabaseCommand;
 
-(new Database(NeonConfig::read($argv[1])))->populate($argv[2]);
+(new DatabaseCommand())->runPopulate($argv);
