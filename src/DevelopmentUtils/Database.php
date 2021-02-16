@@ -53,10 +53,16 @@ class Database
 	public function create(): void
 	{
 		$databaseName = $this->config['name'];
-		CliCommand::printInfo("Dropping database $databaseName.");
-		$this->mysql("-e 'DROP DATABASE IF EXISTS `$databaseName`'");
+		$this->drop();
 		CliCommand::printInfo("Creating database $databaseName.");
 		$this->mysql("-e 'CREATE DATABASE `$databaseName`'");
+	}
+
+	public function drop(): void
+	{
+		$databaseName = $this->config['name'];
+		CliCommand::printInfo("Dropping database $databaseName.");
+		$this->mysql("-e 'DROP DATABASE IF EXISTS `$databaseName`'");
 	}
 
 	private function mysql(string $command): void

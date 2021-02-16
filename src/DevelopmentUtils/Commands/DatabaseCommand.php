@@ -28,6 +28,17 @@ class DatabaseCommand
 	/**
 	 * @param array<mixed> $argv
 	 */
+	public function runDrop(array $argv): void
+	{
+		$cli = new Cli();
+		$cli->description('Dropdatabase.');
+		$this->defineArg($cli);
+		$this->createInstance($cli->parse($argv))->drop();
+	}
+
+	/**
+	 * @param array<mixed> $argv
+	 */
 	public function runPopulate(array $argv): void
 	{
 		$cli = new Cli();

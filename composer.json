@@ -40,6 +40,7 @@
   },
   "bin": [
     "bin/create-database",
+    "bin/drop-database",
     "bin/generate-constants",
     "bin/download-development",
     "bin/populate-database",
