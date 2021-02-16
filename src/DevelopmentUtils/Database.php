@@ -24,6 +24,25 @@ class Database
 		$this->config = $config;
 	}
 
+	/**
+	 * @param array<mixed> $config
+	 */
+	public static function mysqlConfig(array $config): string
+	{
+		$parts = [];
+		$mapping = [
+			'host' => "-h'%s'",
+			'user' => "-u'%s'",
+			'password' => "-p'%s'",
+		];
+		foreach ($mapping as $configKey => $template) {
+			if (isset($config[$configKey])) {
+				$parts[] = sprintf($template, $config[$configKey]);
+			}
+		}
+		return implode(' ', $parts);
+	}
+
 	public function populate(string $pathToDbDump): void
 	{
 		$databaseName = $this->config['name'];
@@ -42,23 +61,7 @@ class Database
 
 	private function mysql(string $command): void
 	{
-		CliCommand::exec(implode(' ', ['mysql', self::mysqlConfig(), $command]));
-	}
-
-	private function mysqlConfig(): string
-	{
-		$parts = [];
-		$mapping = [
-			'host' => "-h'%s'",
-			'user' => "-u'%s'",
-			'password' => "-p'%s'",
-		];
-		foreach ($mapping as $configKey => $template) {
-			if (isset($this->config[$configKey])) {
-				$parts[] = sprintf($template, $this->config[$configKey]);
-			}
-		}
-		return implode(' ', $parts);
+		CliCommand::exec(implode(' ', ['mysql', self::mysqlConfig($this->config), $command]));
 	}
 
 }

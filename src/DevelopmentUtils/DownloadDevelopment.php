@@ -52,10 +52,8 @@ class DownloadDevelopment
 		CliCommand::printInfo("Dumping database on remote to file $remoteDatabaseDump.");
 		$this->remoteFileSystem->cli(
 			sprintf(
-				"mysqldump -h%s -u%s -p%s %s > %s",
-				$database['host'],
-				$database['user'],
-				$database['password'],
+				"mysqldump %s %s> %s",
+				Database::mysqlConfig($database),
 				$databaseName,
 				$remoteDatabaseDump,
 			)
