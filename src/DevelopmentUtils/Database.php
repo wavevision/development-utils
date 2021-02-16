@@ -47,7 +47,18 @@ class Database
 
 	private function mysqlConfig(): string
 	{
-		return sprintf("-h'%s' -u'%s' -p'%s'", $this->config['host'], $this->config['user'], $this->config['password']);
+		$parts = [];
+		$mapping = [
+			'host' => "-h'%s'",
+			'user' => "-u'%s'",
+			'password' => "-p'%s'",
+		];
+		foreach ($mapping as $configKey => $template) {
+			if (isset($this->config[$configKey])) {
+				$parts[] = sprintf($template, $this->config[$configKey]);
+			}
+		}
+		return implode(' ', $parts);
 	}
 
 }
