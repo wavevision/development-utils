@@ -65,7 +65,7 @@ class Database
 		$this->mysql("-e 'DROP DATABASE IF EXISTS `$databaseName`'");
 	}
 
-	private function mysql(string $command): void
+	public function mysql(string $command): void
 	{
 		CliCommand::exec(implode(' ', ['mysql', self::mysqlConfig($this->config), $command]));
 	}
