@@ -18,7 +18,7 @@ phpcbf:
 	$(bin)/phpcbf -spn --standard=$(codeSnifferRuleset) --extensions=php $(dirs)
 
 phpstan:
-	$(bin)/phpstan analyze $(dirs) --level max
+	$(bin)/phpstan analyze $(dirs)
 
 ci: check-syntax phpcs phpstan
 

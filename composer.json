@@ -35,7 +35,7 @@
     "vanilla/garden-cli": "^3.1"
   },
   "require-dev": {
-    "wavevision/coding-standard": "^5.2",
+    "wavevision/coding-standard": "^6.0",
     "phpunit/phpunit": "^9.2"
   },
   "bin": [
@@ -45,5 +45,8 @@
     "bin/download-development",
     "bin/populate-database",
     "bin/setup-development"
-  ]
+  ],
+  "extra": {
+    "phpstan": {}
+  }
 }
