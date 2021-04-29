@@ -34,6 +34,8 @@ class Database
 			'host' => "-h'%s'",
 			'user' => "-u'%s'",
 			'password' => "-p'%s'",
+			'port' => "-P'%s'",
+			'protocol' => "--protocol='%s'",
 		];
 		foreach ($mapping as $configKey => $template) {
 			if (isset($config[$configKey])) {
